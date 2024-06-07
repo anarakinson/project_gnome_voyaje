@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxtx1u26armhw"]
+
+[ext_resource type="Script" path="res://Game/character/target_location.gd" id="1_dvm34"]
+[ext_resource type="Texture2D" uid="uid://m7swem8hjj7v" path="res://Assets/spr_coin_roj.png" id="3_7vog5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5v0j"]
+radius = 35.2278
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w34p"]
+atlas = ExtResource("3_7vog5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34okq"]
+atlas = ExtResource("3_7vog5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob6wp"]
+atlas = ExtResource("3_7vog5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tdcm"]
+atlas = ExtResource("3_7vog5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ayuhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w34p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34okq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob6wp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tdcm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TargetLocationBeacon" type="Node2D"]
+z_index = 5
+script = ExtResource("1_dvm34")
+
+[node name="TargetLocationArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLocationArea"]
+shape = SubResource("CircleShape2D_l5v0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TargetLocationArea"]
+modulate = Color(1, 1, 1, 0.682353)
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_ayuhf")
+autoplay = "default"

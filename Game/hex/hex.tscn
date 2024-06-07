@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://ds0ey5vbgt7nn"]
+
+[ext_resource type="Script" path="res://Game/hex/hex.gd" id="1_5n4kh"]
+[ext_resource type="Texture2D" uid="uid://c4fpatpxuhk51" path="res://Assets/fantasyhextiles_v3.png" id="2_icwy4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r062j"]
+atlas = ExtResource("2_icwy4")
+region = Rect2(32, 49, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8figt"]
+atlas = ExtResource("2_icwy4")
+region = Rect2(64, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkuh7"]
+atlas = ExtResource("2_icwy4")
+region = Rect2(0, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p1rq"]
+atlas = ExtResource("2_icwy4")
+region = Rect2(192, 0, 32, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62332"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r062j")
+}],
+"loop": true,
+"name": &"city",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8figt")
+}],
+"loop": true,
+"name": &"forest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkuh7")
+}],
+"loop": true,
+"name": &"grass",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p1rq")
+}],
+"loop": true,
+"name": &"water",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ko4re"]
+radius = 58.0086
+
+[node name="Hex" type="Node2D"]
+script = ExtResource("1_5n4kh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.980392)
+position = Vector2(0, -35)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_62332")
+animation = &"grass"
+autoplay = "grass"
+
+[node name="SocketDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SocketDetection"]
+shape = SubResource("CircleShape2D_ko4re")
+debug_color = Color(0, 0.6, 0.701961, 0.176471)
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -29.0
+offset_right = 34.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="SocketDetection" to="." method="_on_socket_detection_area_entered"]
+[connection signal="area_exited" from="SocketDetection" to="." method="_on_socket_detection_area_exited"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

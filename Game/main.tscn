@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://e6nabrs1yosc"]
+
+[ext_resource type="Script" path="res://Game/main.gd" id="1_5yp37"]
+[ext_resource type="Texture2D" uid="uid://dni8xnwe0txnh" path="res://Assets/Desktop.jpg" id="2_2lpld"]
+[ext_resource type="PackedScene" uid="uid://ds0ey5vbgt7nn" path="res://Game/hex/hex.tscn" id="3_lj8sk"]
+[ext_resource type="PackedScene" uid="uid://c3s62s4vmblnu" path="res://Game/socket/socket.tscn" id="4_rposp"]
+[ext_resource type="PackedScene" uid="uid://b705wj5lbylpf" path="res://Game/character/character.tscn" id="5_qqc3b"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5yp37")
+
+[node name="Desktop" type="Sprite2D" parent="."]
+position = Vector2(618, 579)
+scale = Vector2(1.85801, 1.85801)
+texture = ExtResource("2_2lpld")
+
+[node name="Sockets" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Socket" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(216, 459)
+num = 1
+
+[node name="Socket3" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(312, 516)
+num = 2
+
+[node name="Socket4" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(313, 403)
+num = 3
+
+[node name="Socket2" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(410, 459)
+num = 4
+
+[node name="Socket5" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(216, 347)
+num = 5
+
+[node name="Socket7" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(410, 346)
+num = 7
+
+[node name="Socket8" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(411, 234)
+num = 8
+
+[node name="Socket9" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(217, 234)
+num = 9
+
+[node name="Socket11" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(314, 179)
+num = 10
+
+[node name="Hexes" type="Node2D" parent="Sockets"]
+z_index = 2
+y_sort_enabled = true
+
+[node name="Hex" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(319, 1045)
+
+[node name="Hex2" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(318, 763)
+
+[node name="Hex3" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(131, 770)
+
+[node name="Hex4" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(542, 766)
+
+[node name="Hex5" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(532, 1029)
+
+[node name="Hex7" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(405, 886)
+
+[node name="Hex6" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(122, 1034)
+
+[node name="Hex8" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+position = Vector2(213, 901)
+
+[node name="Character" parent="." instance=ExtResource("5_qqc3b")]
+z_index = 4
+position = Vector2(220, 556)
