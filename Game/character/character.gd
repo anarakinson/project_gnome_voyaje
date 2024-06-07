@@ -35,24 +35,28 @@ func _process(delta):
 		global_position = global_position.move_toward(where_to_go, 300 * delta)
 			
 	if Input.is_action_just_pressed("tap") and is_chosen == true:
-		is_chosen = false
-		where_to_go = get_global_mouse_position()
 		current_state = "run"
+		where_to_go = get_global_mouse_position()
 		target_location = target_location_preload.instantiate()
 		get_parent().add_child(target_location)
 		target_location.global_position = get_global_mouse_position()
+		#await get_tree().create_timer(0.1).timeout
+		is_chosen = false
 
 
 	#if Input.is_action_just_pressed("tap") and is_chosen == true:
 		#pass
 
+# choose if idle
 func _on_player_choosing_pressed():
-	is_chosen = true
+	if current_state == "idle":
+		print("choosen")
+		is_chosen = true
 
 
+# if at distination - stop moving
 func _on_character_area_area_entered(area):
 	if area.name == "TargetLocationArea":
-		print("aaaaaa")
 		await get_tree().create_timer(0.2).timeout
 		current_state = "idle"
 		target_location = null
