@@ -19,69 +19,114 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Socket" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(216, 459)
+position = Vector2(222, 500)
 num = 1
 
 [node name="Socket3" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(312, 516)
+position = Vector2(318, 557)
 num = 2
 
 [node name="Socket4" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(313, 403)
+position = Vector2(319, 444)
 num = 3
 
 [node name="Socket2" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(410, 459)
+position = Vector2(416, 500)
 num = 4
 
 [node name="Socket5" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(216, 347)
+position = Vector2(222, 388)
+num = 5
+
+[node name="Socket6" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(125, 443)
+num = 1
+
+[node name="Socket10" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(125, 331)
+num = 5
+
+[node name="Socket12" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(513, 443)
+num = 1
+
+[node name="Socket13" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(513, 331)
 num = 5
 
 [node name="Socket7" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(410, 346)
+position = Vector2(416, 387)
 num = 7
 
 [node name="Socket8" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(411, 234)
+position = Vector2(417, 275)
 num = 8
 
 [node name="Socket9" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(217, 234)
+position = Vector2(223, 275)
 num = 9
 
 [node name="Socket11" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(314, 179)
+position = Vector2(320, 220)
 num = 10
 
-[node name="Hexes" type="Node2D" parent="Sockets"]
+[node name="Socket14" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(125, 218)
+num = 5
+
+[node name="Socket15" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(513, 218)
+num = 5
+
+[node name="Socket16" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(417, 162)
+num = 8
+
+[node name="Socket17" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(223, 162)
+num = 9
+
+[node name="Socket18" parent="Sockets" instance=ExtResource("4_rposp")]
+position = Vector2(320, 107)
+num = 10
+
+[node name="Hexes" type="Node2D" parent="."]
 z_index = 2
 y_sort_enabled = true
 
-[node name="Hex" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(319, 1045)
 
-[node name="Hex2" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex2" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(318, 763)
 
-[node name="Hex3" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex3" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(131, 770)
 
-[node name="Hex4" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex4" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(542, 766)
 
-[node name="Hex5" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex5" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(532, 1029)
 
-[node name="Hex7" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex7" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(405, 886)
 
-[node name="Hex6" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex6" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(122, 1034)
 
-[node name="Hex8" parent="Sockets/Hexes" instance=ExtResource("3_lj8sk")]
+[node name="Hex8" parent="Hexes" instance=ExtResource("3_lj8sk")]
 position = Vector2(213, 901)
+
+[node name="ScreenLocker" type="ColorRect" parent="."]
+offset_left = -794.0
+offset_top = -336.0
+offset_right = 1708.0
+offset_bottom = 1318.0
+color = Color(1, 1, 1, 0)
 
 [node name="Character" parent="." instance=ExtResource("5_qqc3b")]
 z_index = 4
-position = Vector2(220, 556)
+position = Vector2(220, 600)
+
+[node name="Camera2D" type="Camera2D" parent="Character"]

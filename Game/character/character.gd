@@ -52,6 +52,9 @@ func _on_player_choosing_pressed():
 	if current_state == "idle":
 		print("choosen")
 		is_chosen = true
+		GlobalSettings._lock_screen.emit("lock")
+
+
 
 
 # if at distination - stop moving
@@ -61,4 +64,5 @@ func _on_character_area_area_entered(area):
 		current_state = "idle"
 		target_location = null
 		area.get_parent().free()
+		GlobalSettings._lock_screen.emit("unlock")
 		

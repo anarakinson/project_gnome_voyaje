@@ -115,14 +115,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bqwa"]
-radius = 22.0
-height = 76.0
+radius = 25.0
+height = 62.0
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_f2iik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -73)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2qwle")
 animation = &"run"
@@ -136,15 +136,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -32.0
-offset_top = -45.0
+offset_top = -86.0
 offset_right = 32.0
-offset_bottom = 49.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CharacterArea" type="Area2D" parent="."]
+position = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArea"]
+position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_4bqwa")
 
 [connection signal="pressed" from="PlayerChoosing" to="." method="_on_player_choosing_pressed"]

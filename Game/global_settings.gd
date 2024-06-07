@@ -1,5 +1,6 @@
 extends Node
 
+signal _lock_screen(state)
 
 #var current_OS = OS.get_name()
 var current_OS : String = "Android"
@@ -7,6 +8,8 @@ var current_OS : String = "Android"
 var save_path = "user://saves/variable.save"
 
 var players_money = 0
+
+var screen_locked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
