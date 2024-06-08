@@ -1,8 +1,12 @@
 extends Node2D
 
 
-var start_position = Vector2()
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var hex_chosing = $HexChosing
 
+var disable_floating : bool = false
+
+var start_position = Vector2()
 
 var is_picked_up = false 
 var is_inserted = false
@@ -18,12 +22,14 @@ var occupied_socket = null
 # point to make hexes floating when idle
 var idle_start_position = Vector2()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_position = global_position
 	_on_timer_timeout()
 	if (GlobalSettings.current_OS == "Android" or GlobalSettings.current_OS == "iOS"):
 		pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -39,19 +45,15 @@ func _process(delta):
 		global_position = global_position.move_toward(start_position, 3500 * delta)
 		if global_position == start_position:
 			is_idle = true
-	elif (is_idle):
+	elif (is_idle and not disable_floating):
 		global_position = global_position.move_toward(idle_start_position, 2 * delta)
 	
+		
 	if (nearest_socket not in nearest_sockets):
 		nearest_socket = null
 
-	#if inserted:
-		#modulate.a8 = 200
-	#else:
-		#modulate.a8 = 255
-	#print(is_idle)
 
-func _on_button_button_down():
+func _on_hex_chosing_button_down():
 	if is_inserted:
 		is_inserted = false
 		if occupied_socket != null:
@@ -61,15 +63,18 @@ func _on_button_button_down():
 	is_picked_up = true
 	z_index += 5
 
-func _on_button_button_up():
+func _on_hex_chosing_button_up():
 	is_picked_up = false
 	z_index -= 5
 
 
 func insertion(delta):
+	if nearest_socket == null:
+		return
 	global_position = nearest_socket.global_position
-	#global_position = global_position.move_toward(nearest_socket.global_position, 10_000*delta)
+	#global_position = global_position.move_toward(nearest_socket.global_position, 3500*delta)
 	is_inserted = true
+	is_idle = false
 	occupied_socket = nearest_socket
 	occupied_socket.is_occupied = true
 	occupied_socket.change_color()
@@ -108,3 +113,4 @@ func _on_socket_detection_area_exited(area):
 func _on_timer_timeout():
 	idle_start_position.x = start_position.x + randi_range(-25, 25)
 	idle_start_position.y = start_position.y + randi_range(-25, 25)
+

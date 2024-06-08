@@ -1,62 +1,62 @@
-[gd_scene load_steps=20 format=3 uid="uid://b705wj5lbylpf"]
+[gd_scene load_steps=20 format=3 uid="uid://dkue6384120m3"]
 
-[ext_resource type="Script" path="res://Game/character/character.gd" id="1_f2iik"]
-[ext_resource type="Texture2D" uid="uid://cdngdchw6l2t0" path="res://Assets/generic_char_v0.2/png/green/char_green_1.png" id="1_gh2hp"]
+[ext_resource type="Script" path="res://Game/character/other_character.gd" id="1_bokb2"]
+[ext_resource type="Texture2D" uid="uid://cdngdchw6l2t0" path="res://Assets/generic_char_v0.2/png/green/char_green_1.png" id="2_rg0ye"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfbks"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(0, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aa8oq"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(56, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8bgu5"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(112, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmw2o"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(168, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mx7vd"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(224, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8ogi"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(280, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shnub"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(0, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khrtf"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(56, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0ij2"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(112, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfv0q"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(168, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24kb3"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(224, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_es4qa"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(280, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ya5s"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(336, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2o26c"]
-atlas = ExtResource("1_gh2hp")
+atlas = ExtResource("2_rg0ye")
 region = Rect2(392, 112, 56, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2qwle"]
@@ -115,37 +115,23 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bqwa"]
-radius = 25.0
-height = 62.0
+radius = 20.0
+height = 40.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qaid"]
-radius = 25.0
-height = 50.0
+radius = 21.0
+height = 42.0
 
 [node name="Character" type="CharacterBody2D"]
-script = ExtResource("1_f2iik")
+z_index = 4
+script = ExtResource("1_bokb2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -73)
-scale = Vector2(3, 3)
+position = Vector2(0, -54)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2qwle")
 animation = &"run"
 autoplay = "idle"
-
-[node name="PlayerChoosing" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -86.0
-offset_right = 32.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="CharacterArea" type="Area2D" parent="."]
 position = Vector2(0, -4)
@@ -157,5 +143,4 @@ shape = SubResource("CapsuleShape2D_4bqwa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1qaid")
 
-[connection signal="pressed" from="PlayerChoosing" to="." method="_on_player_choosing_pressed"]
 [connection signal="area_entered" from="CharacterArea" to="." method="_on_character_area_area_entered"]

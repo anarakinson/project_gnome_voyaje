@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://culqhnwk6qe2q"]
+
+[ext_resource type="Script" path="res://Game/hex/hex_zone.gd" id="1_mcntn"]
+[ext_resource type="PackedScene" uid="uid://ds0ey5vbgt7nn" path="res://Game/hex/hex.tscn" id="2_hiltn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jsj0"]
+radius = 73.0616
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4sj0"]
+radius = 28.1603
+
+[node name="HexZone" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_mcntn")
+
+[node name="Hex" parent="." instance=ExtResource("2_hiltn")]
+
+[node name="PlayersBeacon" type="Button" parent="Hex"]
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = 6.0
+theme_override_font_sizes/font_size = 20
+text = "Here"
+
+[node name="PlayerDetection" type="Area2D" parent="Hex"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hex/PlayerDetection"]
+shape = SubResource("CircleShape2D_2jsj0")
+
+[node name="InsideHexArea" type="Area2D" parent="Hex"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hex/InsideHexArea"]
+shape = SubResource("CircleShape2D_o4sj0")
+
+[connection signal="pressed" from="Hex/PlayersBeacon" to="." method="_on_players_beacon_pressed"]
+[connection signal="area_entered" from="Hex/PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="Hex/PlayerDetection" to="." method="_on_player_detection_area_exited"]
+[connection signal="area_entered" from="Hex/InsideHexArea" to="." method="_on_inside_hex_area_area_entered"]
+[connection signal="area_exited" from="Hex/InsideHexArea" to="." method="_on_inside_hex_area_area_exited"]

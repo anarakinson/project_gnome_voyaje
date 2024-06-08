@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvhsxcpwmutc8"]
+
+[ext_resource type="Texture2D" uid="uid://c3xbewnxyabjq" path="res://Assets/wood21.png" id="1_akerk"]
+[ext_resource type="Script" path="res://Game/hex/hex_store.gd" id="1_rybid"]
+[ext_resource type="PackedScene" uid="uid://culqhnwk6qe2q" path="res://Game/hex/hex_zone.tscn" id="2_c7j4f"]
+
+[node name="HexStore" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_rybid")
+
+[node name="Deck" type="Sprite2D" parent="."]
+texture = ExtResource("1_akerk")
+
+[node name="Hexes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="HexZone1" parent="Hexes" instance=ExtResource("2_c7j4f")]
+z_index = 3
+position = Vector2(-185, 11.9999)
+scale = Vector2(1.8, 1.8)
+
+[node name="HexZone2" parent="Hexes" instance=ExtResource("2_c7j4f")]
+z_index = 3
+position = Vector2(-72, -38)
+scale = Vector2(1.8, 1.8)
+
+[node name="HexZone4" parent="Hexes" instance=ExtResource("2_c7j4f")]
+z_index = 3
+position = Vector2(168, -31.0001)
+scale = Vector2(1.8, 1.8)
+zone_type = 4
+
+[node name="HexZone3" parent="Hexes" instance=ExtResource("2_c7j4f")]
+z_index = 3
+position = Vector2(52, 12.9999)
+scale = Vector2(1.8, 1.8)
+zone_type = 3
+
+[node name="StartButton" type="Button" parent="."]
+z_index = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -15.5
+offset_right = 77.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "START ADVENTURE"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

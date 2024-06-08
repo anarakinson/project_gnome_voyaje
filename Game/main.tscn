@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://e6nabrs1yosc"]
+[gd_scene load_steps=9 format=3 uid="uid://e6nabrs1yosc"]
 
 [ext_resource type="Script" path="res://Game/main.gd" id="1_5yp37"]
 [ext_resource type="Texture2D" uid="uid://dni8xnwe0txnh" path="res://Assets/Desktop.jpg" id="2_2lpld"]
-[ext_resource type="PackedScene" uid="uid://ds0ey5vbgt7nn" path="res://Game/hex/hex.tscn" id="3_lj8sk"]
-[ext_resource type="PackedScene" uid="uid://c3s62s4vmblnu" path="res://Game/socket/socket.tscn" id="4_rposp"]
-[ext_resource type="PackedScene" uid="uid://b705wj5lbylpf" path="res://Game/character/character.tscn" id="5_qqc3b"]
+[ext_resource type="PackedScene" uid="uid://c3vphfhfrw77a" path="res://Game/socket/socket_field.tscn" id="3_5nl6n"]
+[ext_resource type="PackedScene" uid="uid://culqhnwk6qe2q" path="res://Game/hex/hex_zone.tscn" id="4_6ry3b"]
+[ext_resource type="PackedScene" uid="uid://dvhsxcpwmutc8" path="res://Game/hex/hex_store.tscn" id="4_wo18d"]
+[ext_resource type="PackedScene" uid="uid://dkue6384120m3" path="res://Game/character/other_character.tscn" id="6_6yjbg"]
+[ext_resource type="PackedScene" uid="uid://c7f7prutn7ykk" path="res://Game/UI_ingame/user_interface.tscn" id="6_8qkww"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1n1dc"]
+radius = 80.0
+height = 224.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5yp37")
@@ -15,118 +21,65 @@ scale = Vector2(1.85801, 1.85801)
 texture = ExtResource("2_2lpld")
 
 [node name="Sockets" type="Node2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(1.8, 1.8)
+
+[node name="SocketField" parent="Sockets" instance=ExtResource("3_5nl6n")]
+y_sort_enabled = true
+position = Vector2(178.889, 238.333)
+
+[node name="YSorter" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="HexStore" parent="YSorter" instance=ExtResource("4_wo18d")]
+y_sort_enabled = true
+position = Vector2(340, 1083)
+
+[node name="Hexes" type="Node2D" parent="YSorter"]
+y_sort_enabled = true
+
+[node name="StartHex" parent="YSorter/Hexes" instance=ExtResource("4_6ry3b")]
 z_index = 1
-y_sort_enabled = true
+position = Vector2(322, 624)
+scale = Vector2(1.8, 1.8)
+zone_type = 2
+is_inserted = true
+disabled_floating = true
+disabled_chosing = true
 
-[node name="Socket" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(222, 500)
-num = 1
+[node name="FinishHex" parent="YSorter/Hexes" instance=ExtResource("4_6ry3b")]
+z_index = 1
+position = Vector2(322, 215)
+scale = Vector2(1.8, 1.8)
+zone_type = 1
+is_inserted = true
+disabled_floating = true
+disabled_chosing = true
 
-[node name="Socket3" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(318, 557)
-num = 2
+[node name="Character" parent="." instance=ExtResource("6_6yjbg")]
+z_index = 1
+position = Vector2(320, 634)
+scale = Vector2(0.75, 0.75)
 
-[node name="Socket4" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(319, 444)
-num = 3
+[node name="UserInterface" parent="Character" instance=ExtResource("6_8qkww")]
+zoom = Vector2(2, 2)
+camera_name = "player"
 
-[node name="Socket2" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(416, 500)
-num = 4
+[node name="Congrats" type="Label" parent="Character/UserInterface"]
+visible = false
+show_behind_parent = true
+offset_left = -178.0
+offset_top = -373.0
+offset_right = 172.0
+offset_bottom = -304.0
+theme_override_font_sizes/font_size = 50
+text = "!!!CONGRATS!!!"
 
-[node name="Socket5" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(222, 388)
-num = 5
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="Socket6" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(125, 443)
-num = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1047, 641)
+shape = SubResource("CapsuleShape2D_1n1dc")
 
-[node name="Socket10" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(125, 331)
-num = 5
-
-[node name="Socket12" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(513, 443)
-num = 1
-
-[node name="Socket13" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(513, 331)
-num = 5
-
-[node name="Socket7" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(416, 387)
-num = 7
-
-[node name="Socket8" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(417, 275)
-num = 8
-
-[node name="Socket9" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(223, 275)
-num = 9
-
-[node name="Socket11" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(320, 220)
-num = 10
-
-[node name="Socket14" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(125, 218)
-num = 5
-
-[node name="Socket15" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(513, 218)
-num = 5
-
-[node name="Socket16" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(417, 162)
-num = 8
-
-[node name="Socket17" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(223, 162)
-num = 9
-
-[node name="Socket18" parent="Sockets" instance=ExtResource("4_rposp")]
-position = Vector2(320, 107)
-num = 10
-
-[node name="Hexes" type="Node2D" parent="."]
-z_index = 2
-y_sort_enabled = true
-
-[node name="Hex" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(319, 1045)
-
-[node name="Hex2" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(318, 763)
-
-[node name="Hex3" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(131, 770)
-
-[node name="Hex4" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(542, 766)
-
-[node name="Hex5" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(532, 1029)
-
-[node name="Hex7" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(405, 886)
-
-[node name="Hex6" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(122, 1034)
-
-[node name="Hex8" parent="Hexes" instance=ExtResource("3_lj8sk")]
-position = Vector2(213, 901)
-
-[node name="ScreenLocker" type="ColorRect" parent="."]
-offset_left = -794.0
-offset_top = -336.0
-offset_right = 1708.0
-offset_bottom = 1318.0
-color = Color(1, 1, 1, 0)
-
-[node name="Character" parent="." instance=ExtResource("5_qqc3b")]
-z_index = 4
-position = Vector2(220, 600)
-
-[node name="Camera2D" type="Camera2D" parent="Character"]
+[node name="UserInterface" parent="." instance=ExtResource("6_8qkww")]
+position = Vector2(324, 576)

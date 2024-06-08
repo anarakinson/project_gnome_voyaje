@@ -1,0 +1,366 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3vphfhfrw77a"]
+
+[ext_resource type="Script" path="res://Game/socket/socket_field.gd" id="1_jq6q0"]
+[ext_resource type="PackedScene" uid="uid://c3s62s4vmblnu" path="res://Game/socket/socket.tscn" id="1_u2sob"]
+
+[node name="SocketField" type="Node2D"]
+script = ExtResource("1_jq6q0")
+
+[node name="Sockets" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Socket" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+is_occupied = true
+num = 1
+
+[node name="Socket2" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(0, -56)
+num = 1
+
+[node name="Socket3" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(49, -28)
+num = 1
+
+[node name="Socket4" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(49, 28)
+num = 1
+
+[node name="Socket5" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(0, 56)
+num = 1
+
+[node name="Socket6" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-49, 28)
+num = 1
+
+[node name="Socket7" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-49, -28)
+num = 1
+
+[node name="Socket8" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(0, -112)
+is_occupied = true
+num = 1
+
+[node name="Socket9" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(49, -84)
+num = 1
+
+[node name="Socket10" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(98, -56)
+num = 1
+
+[node name="Socket11" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(98, 0)
+num = 1
+
+[node name="Socket12" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(98, 56)
+num = 1
+
+[node name="Socket13" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(49, 84)
+num = 1
+
+[node name="Socket14" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(0, 112)
+is_occupied = true
+num = 1
+
+[node name="Socket15" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-49, 84)
+num = 1
+
+[node name="Socket16" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-98, 56)
+num = 1
+
+[node name="Socket17" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-98, 0)
+num = 125
+
+[node name="Socket18" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-98, -56)
+num = 123
+
+[node name="Socket19" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-49, -84)
+num = 124
+
+[node name="Socket20" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(0, -168)
+num = 1
+
+[node name="Socket21" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(49, -140)
+num = 1
+
+[node name="Socket22" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(98, -112)
+num = 1
+
+[node name="Socket23" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(147, -84)
+num = 1
+
+[node name="Socket24" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(147, -28)
+num = 1
+
+[node name="Socket25" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(147, 28)
+num = 1
+
+[node name="Socket26" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(147, 84)
+num = 1
+
+[node name="Socket27" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(98, 112)
+num = 1
+
+[node name="Socket28" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(49, 140)
+num = 1
+
+[node name="Socket29" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(0, 168)
+num = 1
+
+[node name="Socket30" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-49, 140)
+num = 1
+
+[node name="Socket31" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-98, 112)
+num = 1
+
+[node name="Socket32" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-147, 84)
+num = 1
+
+[node name="Socket33" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-147, 28)
+num = 1
+
+[node name="Socket34" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-147, -28)
+num = 1
+
+[node name="Socket35" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-147, -84)
+num = 1
+
+[node name="Socket36" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-98, -112)
+num = 1
+
+[node name="Socket37" parent="Sockets" instance=ExtResource("1_u2sob")]
+y_sort_enabled = true
+position = Vector2(-49, -140)
+num = 1
+
+[node name="Socket38" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, -224)
+is_occupied = true
+num = 1
+
+[node name="Socket39" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(49, -196)
+is_occupied = true
+num = 1
+
+[node name="Socket40" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(98, -168)
+is_occupied = true
+num = 1
+
+[node name="Socket41" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(147, -140)
+is_occupied = true
+num = 1
+
+[node name="Socket42" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, -112)
+is_occupied = true
+num = 1
+
+[node name="Socket43" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, -56)
+is_occupied = true
+num = 1
+
+[node name="Socket44" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, 0)
+is_occupied = true
+num = 1
+
+[node name="Socket45" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, 56)
+is_occupied = true
+num = 1
+
+[node name="Socket46" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, 112)
+is_occupied = true
+num = 1
+
+[node name="Socket47" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(147, 140)
+is_occupied = true
+num = 1
+
+[node name="Socket48" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(98, 168)
+is_occupied = true
+num = 1
+
+[node name="Socket49" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(49, 196)
+is_occupied = true
+num = 1
+
+[node name="Socket50" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, 224)
+is_occupied = true
+num = 1
+
+[node name="Socket51" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-49, 196)
+is_occupied = true
+num = 1
+
+[node name="Socket52" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-98, 168)
+is_occupied = true
+num = 1
+
+[node name="Socket53" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-147, 140)
+is_occupied = true
+num = 1
+
+[node name="Socket54" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, 112)
+is_occupied = true
+num = 1
+
+[node name="Socket55" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, 56)
+is_occupied = true
+num = 1
+
+[node name="Socket56" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, 0)
+is_occupied = true
+num = 1
+
+[node name="Socket57" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, -56)
+is_occupied = true
+num = 1
+
+[node name="Socket58" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, -112)
+is_occupied = true
+num = 1
+
+[node name="Socket59" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-147, -140)
+is_occupied = true
+num = 1
+
+[node name="Socket60" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-98, -168)
+is_occupied = true
+num = 1
+
+[node name="Socket61" parent="Sockets" instance=ExtResource("1_u2sob")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-49, -196)
+is_occupied = true
+num = 1

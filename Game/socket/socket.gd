@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var is_occupied = false
+@export var is_occupied = false
 @export var num = 0
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -17,11 +17,11 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#print(num, " " , is_occupied)
-	#modulate.a8 = 255
-	pass
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	##print(num, " " , is_occupied)
+	##modulate.a8 = 255
+	#pass
 
 
 
@@ -30,6 +30,6 @@ func _process(delta):
 
 func change_color():
 	if is_occupied:
-		animated_sprite_2d.modulate = Color(255, 0, 0)
+		animated_sprite_2d.modulate = Color(0, 100, 255)
 	else:
 		animated_sprite_2d.modulate = default_color

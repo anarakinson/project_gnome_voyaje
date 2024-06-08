@@ -1,6 +1,9 @@
 extends Node
 
-signal _lock_screen(state)
+signal _phase_changed(which)
+signal _move_character(where)
+signal _victory
+signal _hex_zone_created
 
 #var current_OS = OS.get_name()
 var current_OS : String = "Android"
@@ -9,10 +12,20 @@ var save_path = "user://saves/variable.save"
 
 var players_money = 0
 
-var screen_locked = false
+var current_phase = phases.MAP
+
+enum phases {
+	MAP,
+	ADVENTURE
+}
+
+var current_socket_field_size = 0
+var socket_for_occupation = null
+var time_for_occupation = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	connect("_phase_changed", _on_phase_changed)
 	#ask permissions for mobile
 	OS.request_permissions()
 	# make save directorie
@@ -31,9 +44,9 @@ func _ready():
 		"Web":
 			print("Web")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	#pass
 
 
 
@@ -55,3 +68,7 @@ func load_game():
 		file.close()
 	else:
 		pass
+
+
+func _on_phase_changed(which):
+	current_phase = which
