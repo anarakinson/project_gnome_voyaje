@@ -9,7 +9,7 @@ script = ExtResource("1_jq6q0")
 [node name="Sockets" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Socket" parent="Sockets" instance=ExtResource("1_u2sob")]
+[node name="Socket1" parent="Sockets" instance=ExtResource("1_u2sob")]
 visible = false
 y_sort_enabled = true
 is_occupied = true

@@ -1,6 +1,7 @@
 extends Node2D
 
 
+@export var zone_type = zone_types.DEFAULT
 @export var is_occupied = false
 @export var num = 0
 
@@ -8,9 +9,17 @@ extends Node2D
 
 var default_color : Color
 
+enum zone_types {
+	DEFAULT,
+	START,
+	FINISH,
+}
+
+$Label.text = str(num)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Label.text = str(num)
+	$Label.visible = false
 
 	default_color = animated_sprite_2d.modulate
 
