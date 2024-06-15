@@ -5,10 +5,12 @@ var field_size = 0
 
 var AI_counter = 1
 var not_occupied : Array = []
+var autoinsertion_mode = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalSettings.connect("_hex_zone_created", _on_new_hex_zone_created)
+	GlobalSettings.connect("_autoinsertion_activated", _on_autoinsertion_activated)
 	for sock in sockets.get_children():
 		if not sock.is_occupied:
 			field_size += 1
@@ -24,7 +26,8 @@ func _on_new_hex_zone_created():
 	AI_counter += 1
 	if AI_counter > 1:
 		calculate_occupied()
-		AI_counter = 0
+		if not autoinsertion_mode:
+			AI_counter = 0
 
 
 func calculate_occupied():
@@ -38,4 +41,6 @@ func calculate_occupied():
 		GlobalSettings.socket_for_occupation = not_occupied[idx]
 		GlobalSettings.time_for_occupation = true
 
-
+func _on_autoinsertion_activated():
+	autoinsertion_mode = true
+	calculate_occupied()

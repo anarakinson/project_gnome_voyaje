@@ -36,6 +36,20 @@ text = "Hexes left:
 0"
 metadata/_edit_use_anchors_ = true
 
+[node name="Button" type="Button" parent="Deck"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = -282.5
+offset_right = -57.5
+offset_bottom = -251.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Autoinsertion"
+
 [node name="Hexes" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -67,4 +81,5 @@ offset_right = 8.0
 offset_bottom = 8.0
 
 [connection signal="pressed" from="Deck/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Deck/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="AutoInsert" to="." method="_on_auto_insert_pressed"]

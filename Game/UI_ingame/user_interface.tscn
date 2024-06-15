@@ -7,51 +7,41 @@ enabled = false
 process_callback = 0
 script = ExtResource("1_2xmxm")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ChangePhaseButton" type="Button" parent="Control"]
-layout_mode = 1
+[node name="ChangePhaseButton" type="Button" parent="UI"]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 176.0
-offset_top = -544.0
-offset_right = 291.0
-offset_bottom = -513.0
+offset_left = 502.0
+offset_top = 27.0
+offset_right = 617.0
+offset_bottom = -1072.0
 grow_vertical = 2
 text = "change phase"
 
-[node name="ChangePhaseButtonSmall" type="Button" parent="Control"]
-offset_left = 81.0
-offset_top = -375.0
-offset_right = 206.0
-offset_bottom = -344.0
-text = "change phase"
+[node name="Button" type="Button" parent="UI"]
+visible = false
+offset_left = 40.0
+offset_top = 43.0
+offset_right = 291.0
+offset_bottom = 92.0
+text = "AAAAAAAAAAAAA"
 
-[node name="RestartButton" type="Button" parent="Control"]
-offset_left = -277.0
-offset_top = -550.0
-offset_right = -164.0
-offset_bottom = -500.0
+[node name="Button2" type="Button" parent="UI"]
+visible = false
+offset_left = 384.0
+offset_top = 1071.0
+offset_right = 635.0
+offset_bottom = 1120.0
+text = "AAAAAAAAAAAAA"
+
+[node name="RestartButton" type="Button" parent="UI"]
+offset_left = 51.0
+offset_top = 29.0
+offset_right = 164.0
+offset_bottom = 79.0
 theme_override_font_sizes/font_size = 30
 text = "Restart"
 
-[node name="RestartButtonSmall" type="Button" parent="Control"]
-offset_left = -176.0
-offset_top = -387.0
-offset_right = -63.0
-offset_bottom = -337.0
-theme_override_font_sizes/font_size = 30
-text = "Restart"
-
-[connection signal="pressed" from="Control/ChangePhaseButton" to="." method="_on_change_phase_button_pressed"]
-[connection signal="pressed" from="Control/ChangePhaseButtonSmall" to="." method="_on_change_phase_button_small_pressed"]
-[connection signal="pressed" from="Control/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Control/RestartButtonSmall" to="." method="_on_restart_button_small_pressed"]
+[connection signal="pressed" from="UI/ChangePhaseButton" to="." method="_on_change_phase_button_pressed"]
+[connection signal="pressed" from="UI/RestartButton" to="." method="_on_restart_button_pressed"]

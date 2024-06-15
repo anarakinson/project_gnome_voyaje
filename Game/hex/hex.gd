@@ -73,8 +73,9 @@ func insertion(delta):
 		return
 	global_position = nearest_socket.global_position
 	#global_position = global_position.move_toward(nearest_socket.global_position, 3500*delta)
-	is_inserted = true
+	#if global_position == nearest_socket.global_position:
 	is_idle = false
+	is_inserted = true
 	occupied_socket = nearest_socket
 	occupied_socket.is_occupied = true
 	occupied_socket.change_color()

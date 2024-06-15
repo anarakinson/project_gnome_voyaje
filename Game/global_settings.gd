@@ -4,6 +4,7 @@ signal _phase_changed(which)
 signal _move_character(where)
 signal _victory
 signal _hex_zone_created
+signal _autoinsertion_activated
 
 #var current_OS = OS.get_name()
 var current_OS : String = "Android"

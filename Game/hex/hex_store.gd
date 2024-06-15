@@ -107,3 +107,7 @@ func autoinsertion():
 
 #func _on_auto_insert_pressed():
 	
+
+
+func _on_button_pressed():
+	GlobalSettings._autoinsertion_activated.emit()
