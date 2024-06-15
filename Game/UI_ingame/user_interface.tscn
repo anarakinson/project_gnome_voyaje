@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7f7prutn7ykk"]
+[gd_scene load_steps=3 format=3 uid="uid://c7f7prutn7ykk"]
 
 [ext_resource type="Script" path="res://Game/UI_ingame/user_interface.gd" id="1_2xmxm"]
+[ext_resource type="PackedScene" uid="uid://bnjhhdwiugc76" path="res://UI/joystick.tscn" id="2_4u604"]
 
 [node name="UserInterface" type="Camera2D"]
 enabled = false
@@ -12,10 +13,10 @@ script = ExtResource("1_2xmxm")
 [node name="ChangePhaseButton" type="Button" parent="UI"]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 502.0
-offset_top = 27.0
-offset_right = 617.0
-offset_bottom = -1072.0
+offset_left = 50.0
+offset_top = 85.0
+offset_right = 165.0
+offset_bottom = -1014.0
 grow_vertical = 2
 text = "change phase"
 
@@ -43,5 +44,23 @@ offset_bottom = 79.0
 theme_override_font_sizes/font_size = 30
 text = "Restart"
 
+[node name="Button3" type="Button" parent="UI"]
+visible = false
+offset_left = 502.0
+offset_top = 93.0
+offset_right = 620.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 30
+text = "Move 
+position"
+
+[node name="Joystick" parent="UI" instance=ExtResource("2_4u604")]
+position = Vector2(517, 999)
+scale = Vector2(2, 2)
+
 [connection signal="pressed" from="UI/ChangePhaseButton" to="." method="_on_change_phase_button_pressed"]
 [connection signal="pressed" from="UI/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="button_down" from="UI/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="button_up" from="UI/Button3" to="." method="_on_button_3_button_up"]
+[connection signal="_pressed" from="UI/Joystick" to="." method="_on_joystick__pressed"]
+[connection signal="_released" from="UI/Joystick" to="." method="_on_joystick__released"]

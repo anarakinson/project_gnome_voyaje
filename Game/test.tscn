@@ -1,0 +1,444 @@
+[gd_scene load_steps=10 format=3 uid="uid://pig5l4bwb078"]
+
+[ext_resource type="Script" path="res://Game/main.gd" id="1_pqhau"]
+[ext_resource type="Texture2D" uid="uid://dni8xnwe0txnh" path="res://Assets/Desktop.jpg" id="2_18qsu"]
+[ext_resource type="Script" path="res://Game/socket/socket_field.gd" id="3_r4ii3"]
+[ext_resource type="PackedScene" uid="uid://c3s62s4vmblnu" path="res://Game/socket/socket.tscn" id="4_d5xju"]
+[ext_resource type="PackedScene" uid="uid://dvhsxcpwmutc8" path="res://Game/hex/hex_store.tscn" id="5_uk8nv"]
+[ext_resource type="PackedScene" uid="uid://culqhnwk6qe2q" path="res://Game/hex/hex_zone.tscn" id="6_vfhf5"]
+[ext_resource type="PackedScene" uid="uid://dkue6384120m3" path="res://Game/character/other_character.tscn" id="7_5385x"]
+[ext_resource type="PackedScene" uid="uid://c7f7prutn7ykk" path="res://Game/UI_ingame/user_interface.tscn" id="8_cmyw1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1n1dc"]
+radius = 80.0
+height = 224.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_pqhau")
+
+[node name="Desktop" type="Sprite2D" parent="."]
+position = Vector2(618, 579)
+scale = Vector2(1.85801, 1.85801)
+texture = ExtResource("2_18qsu")
+
+[node name="Sockets" type="Node2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(1.8, 1.8)
+
+[node name="SocketField" type="Node2D" parent="Sockets"]
+y_sort_enabled = true
+position = Vector2(178.889, 238.333)
+script = ExtResource("3_r4ii3")
+
+[node name="Sockets" type="Node2D" parent="Sockets/SocketField"]
+y_sort_enabled = true
+
+[node name="Socket1" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+num = 1
+
+[node name="Socket2" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(0, -56)
+num = 1
+
+[node name="Socket3" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(49, -28)
+num = 1
+
+[node name="Socket4" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(49, 28)
+num = 1
+
+[node name="Socket5" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(0, 56)
+num = 1
+
+[node name="Socket6" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-49, 28)
+num = 1
+
+[node name="Socket7" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-49, -28)
+num = 1
+
+[node name="Socket8" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(0, -112)
+zone_type = 2
+num = 1
+
+[node name="Socket9" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(49, -84)
+num = 1
+
+[node name="Socket10" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(98, -56)
+num = 1
+
+[node name="Socket11" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(98, 0)
+num = 1
+
+[node name="Socket12" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(98, 56)
+num = 1
+
+[node name="Socket13" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(49, 84)
+num = 1
+
+[node name="Socket14" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(0, 112)
+zone_type = 1
+num = 1
+
+[node name="Socket15" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-49, 84)
+num = 1
+
+[node name="Socket16" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-98, 56)
+num = 1
+
+[node name="Socket17" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-98, 0)
+num = 125
+
+[node name="Socket18" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-98, -56)
+num = 123
+
+[node name="Socket19" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-49, -84)
+num = 124
+
+[node name="Socket20" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(0, -168)
+num = 1
+
+[node name="Socket21" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(49, -140)
+num = 1
+
+[node name="Socket22" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(98, -112)
+num = 1
+
+[node name="Socket23" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(147, -84)
+num = 1
+
+[node name="Socket24" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(147, -28)
+num = 1
+
+[node name="Socket25" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(147, 28)
+num = 1
+
+[node name="Socket26" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(147, 84)
+num = 1
+
+[node name="Socket27" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(98, 112)
+num = 1
+
+[node name="Socket28" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(49, 140)
+num = 1
+
+[node name="Socket29" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(0, 168)
+num = 1
+
+[node name="Socket30" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-49, 140)
+num = 1
+
+[node name="Socket31" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-98, 112)
+num = 1
+
+[node name="Socket32" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-147, 84)
+num = 1
+
+[node name="Socket33" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-147, 28)
+num = 1
+
+[node name="Socket34" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-147, -28)
+num = 1
+
+[node name="Socket35" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-147, -84)
+num = 1
+
+[node name="Socket36" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-98, -112)
+num = 1
+
+[node name="Socket37" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+y_sort_enabled = true
+position = Vector2(-49, -140)
+num = 1
+
+[node name="Socket38" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, -224)
+is_occupied = true
+num = 1
+
+[node name="Socket39" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(49, -196)
+is_occupied = true
+num = 1
+
+[node name="Socket40" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(98, -168)
+is_occupied = true
+num = 1
+
+[node name="Socket41" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(147, -140)
+is_occupied = true
+num = 1
+
+[node name="Socket42" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, -112)
+is_occupied = true
+num = 1
+
+[node name="Socket43" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, -56)
+is_occupied = true
+num = 1
+
+[node name="Socket44" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, 0)
+is_occupied = true
+num = 1
+
+[node name="Socket45" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, 56)
+is_occupied = true
+num = 1
+
+[node name="Socket46" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(196, 112)
+is_occupied = true
+num = 1
+
+[node name="Socket47" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(147, 140)
+is_occupied = true
+num = 1
+
+[node name="Socket48" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(98, 168)
+is_occupied = true
+num = 1
+
+[node name="Socket49" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(49, 196)
+is_occupied = true
+num = 1
+
+[node name="Socket50" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, 224)
+is_occupied = true
+num = 1
+
+[node name="Socket51" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-49, 196)
+is_occupied = true
+num = 1
+
+[node name="Socket52" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-98, 168)
+is_occupied = true
+num = 1
+
+[node name="Socket53" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-147, 140)
+is_occupied = true
+num = 1
+
+[node name="Socket54" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, 112)
+is_occupied = true
+num = 1
+
+[node name="Socket55" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, 56)
+is_occupied = true
+num = 1
+
+[node name="Socket56" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, 0)
+is_occupied = true
+num = 1
+
+[node name="Socket57" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, -56)
+is_occupied = true
+num = 1
+
+[node name="Socket58" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-196, -112)
+is_occupied = true
+num = 1
+
+[node name="Socket59" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-147, -140)
+is_occupied = true
+num = 1
+
+[node name="Socket60" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-98, -168)
+is_occupied = true
+num = 1
+
+[node name="Socket61" parent="Sockets/SocketField/Sockets" instance=ExtResource("4_d5xju")]
+visible = false
+y_sort_enabled = true
+position = Vector2(-49, -196)
+is_occupied = true
+num = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HexStore" parent="CanvasLayer" instance=ExtResource("5_uk8nv")]
+y_sort_enabled = true
+position = Vector2(326, 1013)
+
+[node name="Hexes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="StartHex" parent="Hexes" instance=ExtResource("6_vfhf5")]
+z_index = 1
+position = Vector2(794, 264)
+scale = Vector2(1.8, 1.8)
+zone_type = 2
+
+[node name="FinishHex" parent="Hexes" instance=ExtResource("6_vfhf5")]
+z_index = 1
+position = Vector2(791, 436)
+scale = Vector2(1.8, 1.8)
+zone_type = 1
+
+[node name="Character" parent="." instance=ExtResource("7_5385x")]
+z_index = 1
+position = Vector2(821, 777)
+scale = Vector2(0.75, 0.75)
+
+[node name="UserInterface" parent="Character" instance=ExtResource("8_cmyw1")]
+zoom = Vector2(2, 2)
+camera_name = "player"
+
+[node name="Congrats" type="Label" parent="Character/UserInterface"]
+visible = false
+show_behind_parent = true
+offset_left = -178.0
+offset_top = -373.0
+offset_right = 172.0
+offset_bottom = -304.0
+theme_override_font_sizes/font_size = 50
+text = "!!!CONGRATS!!!"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1047, 641)
+shape = SubResource("CapsuleShape2D_1n1dc")
+
+[node name="UserInterface" parent="." instance=ExtResource("8_cmyw1")]
+position = Vector2(324, 576)
+
+[node name="HexZone" parent="." instance=ExtResource("6_vfhf5")]
+position = Vector2(1269, 286)
+
+[node name="Socket" parent="." instance=ExtResource("4_d5xju")]
+position = Vector2(1230, 125)

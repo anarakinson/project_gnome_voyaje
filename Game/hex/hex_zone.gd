@@ -50,6 +50,7 @@ func _process(delta):
 		first_turn = false
 		if disabled_chosing:
 			disable_chosing()
+		search_start_finish()
 
 	if (near_player and not player_inside_hex and hex.is_inserted and
 	GlobalSettings.current_phase == GlobalSettings.phases.ADVENTURE):
@@ -110,3 +111,15 @@ func change_type(new_type : zones):
 		zones.WATER:
 			hex.animated_sprite.play("water")
 	zone_type = new_type
+
+
+func search_start_finish():
+	if zone_type == zones.START_ZONE:
+		hex.nearest_socket = GlobalSettings.start_zone
+		disable_chosing()
+		GlobalSettings._new_insertion.emit()
+	if zone_type == zones.FINISH_ZONE:
+		hex.nearest_socket = GlobalSettings.finish_zone
+		disable_chosing()
+		GlobalSettings._new_insertion.emit()
+	

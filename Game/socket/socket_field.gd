@@ -12,7 +12,7 @@ func _ready():
 	GlobalSettings.connect("_hex_zone_created", _on_new_hex_zone_created)
 	GlobalSettings.connect("_autoinsertion_activated", _on_autoinsertion_activated)
 	for sock in sockets.get_children():
-		if not sock.is_occupied:
+		if not sock.is_occupied and sock.zone_type == sock.zone_types.DEFAULT:
 			field_size += 1
 	GlobalSettings.current_socket_field_size = field_size
 	pass 
@@ -44,3 +44,4 @@ func calculate_occupied():
 func _on_autoinsertion_activated():
 	autoinsertion_mode = true
 	calculate_occupied()
+

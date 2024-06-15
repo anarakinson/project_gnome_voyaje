@@ -5,6 +5,9 @@ signal _move_character(where)
 signal _victory
 signal _hex_zone_created
 signal _autoinsertion_activated
+signal _new_insertion
+signal _new_picked_up
+signal _new_picked_down
 
 #var current_OS = OS.get_name()
 var current_OS : String = "Android"
@@ -22,6 +25,8 @@ enum phases {
 
 var current_socket_field_size = 0
 var socket_for_occupation = null
+var start_zone = null
+var finish_zone = null
 var time_for_occupation = false
 
 # Called when the node enters the scene tree for the first time.

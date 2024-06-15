@@ -62,10 +62,12 @@ func _on_hex_chosing_button_down():
 			occupied_socket = null
 	is_picked_up = true
 	z_index += 5
+	#GlobalSettings._new_picked_up.emit()
 
 func _on_hex_chosing_button_up():
 	is_picked_up = false
 	z_index -= 5
+	GlobalSettings._new_picked_down.emit()
 
 
 func insertion(delta):
@@ -79,7 +81,7 @@ func insertion(delta):
 	occupied_socket = nearest_socket
 	occupied_socket.is_occupied = true
 	occupied_socket.change_color()
-
+	self.reparent(occupied_socket)
 
 
 func calculate_nearest():
@@ -115,3 +117,7 @@ func _on_timer_timeout():
 	idle_start_position.x = start_position.x + randi_range(-25, 25)
 	idle_start_position.y = start_position.y + randi_range(-25, 25)
 
+
+#
+#func _on_hex_chosing_pressed():
+	#GlobalSettings._new_picked_up.emit()

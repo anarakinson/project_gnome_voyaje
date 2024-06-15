@@ -8,8 +8,12 @@ extends Node2D
 
 @onready var hex_zone_1 = $Hexes/HexZone1
 @onready var hex_zone_2 = $Hexes/HexZone2
-@onready var hex_zone_4 = $Hexes/HexZone4
 @onready var hex_zone_3 = $Hexes/HexZone3
+
+@onready var spawning_area_1 = $Deck/SpawningZones/SpawningZone1/CollisionShape2D
+@onready var spawning_area_2 = $Deck/SpawningZones/SpawningZone2/CollisionShape2D
+@onready var spawning_area_3 = $Deck/SpawningZones/SpawningZone3/CollisionShape2D
+
 
 var zone_type_counter = 0
 var hex_spawning_node = preload("res://Game/hex/hex_zone.tscn")
@@ -17,63 +21,48 @@ var hex_spawning_node = preload("res://Game/hex/hex_zone.tscn")
 var spawning_zone1 = Vector2()
 var spawning_zone2 = Vector2()
 var spawning_zone3 = Vector2()
-var spawning_zone4 = Vector2()
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalSettings.connect("_phase_changed", _on_phase_changed)	
+	GlobalSettings.connect("_new_insertion", _on_new_insertion)
+	GlobalSettings.connect("_phase_changed", _on_phase_changed)
+	GlobalSettings.connect("_new_picked_down", _on_new_picked_down)
+	
 	zone_type_counter = GlobalSettings.current_socket_field_size
 	zone_type_counter_label.text = "Hexes left:\n" + str(zone_type_counter)
 	
-	spawning_zone1 = hex_zone_1.global_position
-	spawning_zone2 = hex_zone_2.global_position
-	spawning_zone3 = hex_zone_3.global_position
-	spawning_zone4 = hex_zone_4.global_position
+	set_spawning_zones()
+	calculate_start_position()
 	start_button.visible = false
+	hexes_list.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if zone_type_counter <= 0:
 		start_button.visible = true
 	autoinsertion()
-	
-	if hex_zone_1 != null:
-		if hex_zone_1.hex_is_inserted():
-			hex_zone_1.disable_chosing()
-			hex_zone_1 = get_hex_zone(spawning_zone1)
-	if hex_zone_2 != null:
-		if hex_zone_2.hex_is_inserted():
-			hex_zone_2.disable_chosing()
-			hex_zone_2 = get_hex_zone(spawning_zone2)
-	if hex_zone_3 != null:
-		if hex_zone_3.hex_is_inserted():
-			hex_zone_3.disable_chosing()
-			hex_zone_3 = get_hex_zone(spawning_zone3)
-	if hex_zone_4 != null:
-		if hex_zone_4.hex_is_inserted():
-			hex_zone_4.disable_chosing()
-			hex_zone_4 = get_hex_zone(spawning_zone4)
+	#set_spawning_zones()
 
 
 func _on_phase_changed(which):
 	if which == GlobalSettings.phases.ADVENTURE:
 		deck.visible = false
-		#GlobalSettings._lock_screen.emit("lock")
 	elif which == GlobalSettings.phases.MAP:
 		deck.visible = true
 
 
 func get_hex_zone(spawn_position):
 	var new_hex_zone = null
-	if zone_type_counter > 4:
+	if zone_type_counter > 3:
 		new_hex_zone = hex_spawning_node.instantiate()
 		chose_zone_type(new_hex_zone)
 		hexes_list.add_child(new_hex_zone)
 		new_hex_zone.global_position = spawn_position
 		new_hex_zone.hex.start_position = spawn_position
 		new_hex_zone.scale = Vector2(1.8, 1.8)
-		new_hex_zone.z_index = 1
+		new_hex_zone.z_index = 3
 		new_hex_zone.y_sort_enabled = true
 
 	zone_type_counter -= 1
@@ -105,9 +94,45 @@ func autoinsertion():
 				break
 
 
-#func _on_auto_insert_pressed():
-	
-
-
-func _on_button_pressed():
+func _on_auto_insert_pressed():
 	GlobalSettings._autoinsertion_activated.emit()
+
+func _on_new_insertion():
+	#zone_type_counter -= 1
+	zone_type_counter_label.text = "Hexes left:\n" + str(zone_type_counter)
+	calculate_zone_condition()
+
+func _on_new_picked_down():
+	set_spawning_zones()
+	calculate_start_position()
+
+func set_spawning_zones():
+	spawning_zone1 = spawning_area_1.global_position
+	spawning_zone2 = spawning_area_2.global_position
+	spawning_zone3 = spawning_area_3.global_position
+
+
+func calculate_zone_condition():
+	if hex_zone_1 != null:
+		if hex_zone_1.hex_is_inserted():
+			hex_zone_1.disable_chosing()
+			hex_zone_1 = get_hex_zone(spawning_zone1)
+	if hex_zone_2 != null:
+		if hex_zone_2.hex_is_inserted():
+			hex_zone_2.disable_chosing()
+			hex_zone_2 = get_hex_zone(spawning_zone2)
+	if hex_zone_3 != null:
+		if hex_zone_3.hex_is_inserted():
+			hex_zone_3.disable_chosing()
+			hex_zone_3 = get_hex_zone(spawning_zone3)
+
+func calculate_start_position():
+	if hex_zone_1 != null:
+		if not hex_zone_1.hex_is_inserted():
+			hex_zone_1.hex.start_position = spawning_zone1
+	if hex_zone_2 != null:
+		if not hex_zone_2.hex_is_inserted():
+			hex_zone_2.hex.start_position = spawning_zone2
+	if hex_zone_3 != null:
+		if not hex_zone_3.hex_is_inserted():
+			hex_zone_3.hex.start_position = spawning_zone3

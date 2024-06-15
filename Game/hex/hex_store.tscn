@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvhsxcpwmutc8"]
+[gd_scene load_steps=7 format=3 uid="uid://dvhsxcpwmutc8"]
 
 [ext_resource type="Texture2D" uid="uid://c3xbewnxyabjq" path="res://Assets/wood21.png" id="1_akerk"]
 [ext_resource type="Script" path="res://Game/hex/hex_store.gd" id="1_rybid"]
 [ext_resource type="PackedScene" uid="uid://culqhnwk6qe2q" path="res://Game/hex/hex_zone.tscn" id="2_c7j4f"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oblp4"]
+radius = 33.3766
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56l1u"]
+radius = 35.2278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eb66p"]
+radius = 32.249
+
 [node name="HexStore" type="Node2D"]
 script = ExtResource("1_rybid")
 
 [node name="Deck" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.782132, 0.782132)
 texture = ExtResource("1_akerk")
 
 [node name="StartButton" type="Button" parent="Deck"]
@@ -36,7 +47,7 @@ text = "Hexes left:
 0"
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="Deck"]
+[node name="AutoInsert" type="Button" parent="Deck"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -50,36 +61,46 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Autoinsertion"
 
+[node name="SpawningZones" type="Node2D" parent="Deck"]
+
+[node name="SpawningZone1" type="Area2D" parent="Deck/SpawningZones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/SpawningZones/SpawningZone1"]
+position = Vector2(-177.719, 23.014)
+shape = SubResource("CircleShape2D_oblp4")
+
+[node name="SpawningZone2" type="Area2D" parent="Deck/SpawningZones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/SpawningZones/SpawningZone2"]
+position = Vector2(1.27856, -47.3066)
+shape = SubResource("CircleShape2D_56l1u")
+
+[node name="SpawningZone3" type="Area2D" parent="Deck/SpawningZones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/SpawningZones/SpawningZone3"]
+position = Vector2(152.148, 26.8497)
+shape = SubResource("CircleShape2D_eb66p")
+
 [node name="Hexes" type="Node2D" parent="."]
+visible = false
 y_sort_enabled = true
 
 [node name="HexZone1" parent="Hexes" instance=ExtResource("2_c7j4f")]
-z_index = 1
-position = Vector2(-185, 11.9999)
+z_index = 3
+position = Vector2(-132, 19)
 scale = Vector2(1.8, 1.8)
 
 [node name="HexZone2" parent="Hexes" instance=ExtResource("2_c7j4f")]
-z_index = 1
-position = Vector2(-72, -38)
+z_index = 3
+position = Vector2(5, -36)
 scale = Vector2(1.8, 1.8)
 zone_type = 3
 
-[node name="HexZone4" parent="Hexes" instance=ExtResource("2_c7j4f")]
-z_index = 1
-position = Vector2(168, -31.0001)
-scale = Vector2(1.8, 1.8)
-zone_type = 4
-
 [node name="HexZone3" parent="Hexes" instance=ExtResource("2_c7j4f")]
-z_index = 1
-position = Vector2(52, 12.9999)
+z_index = 3
+position = Vector2(132, 12)
 scale = Vector2(1.8, 1.8)
 zone_type = 5
 
-[node name="AutoInsert" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-
 [connection signal="pressed" from="Deck/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Deck/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="AutoInsert" to="." method="_on_auto_insert_pressed"]
+[connection signal="pressed" from="Deck/AutoInsert" to="." method="_on_auto_insert_pressed"]
